@@ -1,0 +1,18 @@
+server:
+  port: ${PORT:8080}
+  servlet:
+    context-path: /api/v1
+
+spring:
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://${DB_HOST:localhost}:5433/fintech}
+    username: ${SPRING_DATASOURCE_USERNAME:postgres}
+    password: ${SPRING_DATASOURCE_PASSWORD:1007}
+    initialization-mode: always
+    # data: classpath:/data.sql
+    # schema: classpath:db/schema.sql # THE schema.sql file MUST BE PRESENT
+    continue-on-error: true
