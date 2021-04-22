@@ -16,3 +16,8 @@ spring:
     # data: classpath:/data.sql
     # schema: classpath:db/schema.sql # THE schema.sql file MUST BE PRESENT
     continue-on-error: true
+
+secured:
+  app:
+    jwtSecret: SecuredSecretKeyabracadabrajide
+    jwtExpirationMs: 86400000
