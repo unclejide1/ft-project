@@ -7,6 +7,7 @@ import com.fintech.demo.dto.HitCount;
 import com.fintech.demo.model.Accounts;
 import com.fintech.demo.model.Hits;
 import com.fintech.demo.service.CardService;
+import com.google.gson.Gson;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -26,6 +27,7 @@ public class CardServiceImpl implements CardService {
 
     private AccountsDao accountsDao;
     private HitsDao hitsDao;
+    private Gson gson;
 
     @Override
 //    @Cacheable("accounts")
@@ -44,11 +46,13 @@ public class CardServiceImpl implements CardService {
             bank ="N/A";
         }
 
-        return CardDetailsResponseJSON.builder()
-                .cardSchemes(accounts.getCardSchemes().name())
-                .cardType(accounts.getCardType().name())
-                .bank(bank)
-                .build();
+        CardDetailsResponseJSON responseJSON = new CardDetailsResponseJSON();
+        responseJSON.setCardSchemes(accounts.getCardSchemes().name());
+        responseJSON.setCardType(accounts.getCardType().name());
+        responseJSON.setBank(bank);
+
+        System.out.println("result>>>>"+responseJSON.toString());
+        return responseJSON;
     }
 
     @Override
